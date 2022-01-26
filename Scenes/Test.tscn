@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Block.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Killzone.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 100, 20 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 50, 50 )
+
+[node name="Test" type="Node"]
+
+[node name="Block" type="RigidBody2D" parent="." groups=["box"]]
+position = Vector2( 225, 225 )
+collision_layer = 4
+collision_mask = 61
+mass = 30.0
+gravity_scale = 0.0
+linear_damp = 10.0
+angular_damp = 10.0
+script = ExtResource( 2 )
+
+[node name="sprite" type="ColorRect" parent="Block"]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shape" type="CollisionShape2D" parent="Block"]
+shape = SubResource( 1 )
+
+[node name="Block2" type="RigidBody2D" parent="." groups=["box"]]
+position = Vector2( 163, 225 )
+collision_layer = 4
+collision_mask = 61
+mass = 20.0
+gravity_scale = 0.0
+linear_damp = 10.0
+angular_damp = 10.0
+script = ExtResource( 2 )
+
+[node name="sprite" type="ColorRect" parent="Block2"]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shape" type="CollisionShape2D" parent="Block2"]
+shape = SubResource( 1 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2( 333, 352 )
+collision_layer = 8
+collision_mask = 63
+
+[node name="sprite" type="ColorRect" parent="Wall"]
+margin_left = -100.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color( 1, 0.239216, 0.239216, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shape" type="CollisionShape2D" parent="Wall"]
+shape = SubResource( 2 )
+
+[node name="SoftWall" type="StaticBody2D" parent="."]
+position = Vector2( 312, 93 )
+collision_layer = 16
+collision_mask = 61
+
+[node name="sprite" type="ColorRect" parent="SoftWall"]
+margin_left = -100.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color( 1, 0.239216, 0.862745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shape" type="CollisionShape2D" parent="SoftWall"]
+shape = SubResource( 2 )
+
+[node name="Killzone" type="Area2D" parent="."]
+position = Vector2( 80, 73 )
+collision_layer = 32
+collision_mask = 61
+script = ExtResource( 3 )
+
+[node name="sprite" type="ColorRect" parent="Killzone"]
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shape" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource( 3 )
+
+[node name="Label" type="Label" parent="Killzone"]
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 51.0
+margin_bottom = 50.0
+text = "Killzone
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 514, 256 )
+
+[connection signal="body_entered" from="Killzone" to="Killzone" method="_on_Killzone_body_entered"]
