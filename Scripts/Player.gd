@@ -38,6 +38,33 @@ func move(val):
 	else:
 		velocity = Vector2.ZERO  
 
+	if input_vector.y > 0 and input_vector.x == 0:
+		if status == to_be: 
+			$Sprite.frame = 0
+		else:
+			$Sprite.frame = 1
+	
+	elif input_vector.y < 0 and input_vector.x == 0:
+		if status == to_be:
+			$Sprite.frame = 0 
+		else:
+			$Sprite.frame = 1
+	
+	elif input_vector.x > 0:
+		$Sprite.scale.x = -1
+		if status == to_be:
+			$Sprite.frame = 2
+		else:
+			$Sprite.frame = 3 
+			
+	elif input_vector.x < 0:
+		$Sprite.scale.x = 1
+		if status == to_be:
+			$Sprite.frame = 2 
+		else:
+			$Sprite.frame = 3
+			
+
 	move_and_slide(velocity,Vector2(0,0),false, 4, 0, false)
 
 
