@@ -1,0 +1,87 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Collision_tile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/light_Circle.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Thorns.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Level2" type="Node"]
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 480.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ground" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( 65541, 0, 0, 65542, 0, 1, 65543, 0, 2, 131075, 0, 0, 131076, 0, 1, 131077, 0, 131077, 131078, 0, 3, 131079, 0, 131074, 131084, 0, 262146, 196610, 0, 0, 196611, 0, 131077, 196612, 0, 3, 196613, 0, 131073, 196614, 0, 131074, 196615, 1, 131074, 196619, 0, 0, 196620, 0, 262145, 196621, 0, 2, 262146, 0, 65536, 262147, 0, 65537, 262148, 0, 65538, 262149, 1, 131073, 262150, 1, 131074, 262151, 1, 196610, 262154, 0, 0, 262155, 0, 131077, 262156, 0, 65537, 262157, 0, 65538, 327681, 0, 0, 327682, 0, 131077, 327683, 0, 3, 327684, 0, 131074, 327685, 1, 196608, 327686, 1, 196610, 327690, 0, 131072, 327691, 0, 131073, 327692, 0, 5, 327693, 0, 131075, 327694, 0, 1, 327695, 0, 2, 393217, 0, 65541, 393218, 0, 65537, 393219, 0, 65539, 393220, 1, 131074, 393226, 1, 131072, 393227, 1, 131073, 393228, 0, 131072, 393229, 0, 5, 393230, 0, 65537, 393231, 0, 131075, 393232, 0, 131076, 393233, 0, 2, 458753, 0, 131072, 458754, 0, 5, 458755, 0, 65538, 458756, 1, 196610, 458762, 1, 196608, 458763, 1, 196610, 458765, 0, 65541, 458766, 0, 65537, 458767, 0, 65537, 458768, 0, 65537, 458769, 0, 65538, 524289, 1, 131072, 524290, 0, 65536, 524291, 0, 65538, 524300, 0, 0, 524301, 0, 131077, 524302, 0, 65537, 524303, 0, 65537, 524304, 0, 3, 524305, 0, 131074, 589825, 1, 196608, 589826, 0, 65536, 589827, 0, 131075, 589828, 0, 2, 589834, 0, 0, 589835, 0, 131076, 589836, 0, 131077, 589837, 0, 65537, 589838, 0, 3, 589839, 0, 4, 589840, 0, 131074, 589841, 1, 131074, 655362, 0, 131072, 655363, 0, 5, 655364, 0, 131075, 655365, 0, 131076, 655366, 0, 131076, 655367, 0, 131076, 655368, 0, 1, 655369, 0, 131076, 655370, 0, 131077, 655371, 0, 65537, 655372, 0, 65537, 655373, 0, 3, 655374, 0, 131074, 655375, 1, 131072, 655376, 1, 131074, 655377, 1, 196610, 720898, 1, 131072, 720899, 0, 131072, 720900, 0, 4, 720901, 0, 4, 720902, 0, 5, 720903, 0, 65537, 720904, 0, 65537, 720905, 0, 3, 720906, 0, 4, 720907, 0, 131073, 720908, 0, 131073, 720909, 0, 131074, 720910, 1, 131074, 720911, 1, 196608, 720912, 1, 196610, 786434, 1, 196608, 786435, 1, 131072, 786436, 1, 131073, 786437, 1, 131073, 786438, 0, 131072, 786439, 0, 131073, 786440, 0, 131073, 786441, 0, 131074, 786442, 1, 131072, 786443, 1, 131073, 786444, 1, 131073, 786445, 1, 131074, 786446, 1, 196610, 851971, 1, 196608, 851972, 1, 196609, 851973, 1, 196610, 851974, 1, 131072, 851975, 1, 131073, 851976, 1, 131073, 851977, 1, 131074, 851978, 1, 196608, 851979, 1, 196609, 851980, 1, 196609, 851981, 1, 196610, 917510, 1, 196608, 917511, 1, 196609, 917512, 1, 196609, 917513, 1, 196610 )
+
+[node name="Collision_tile" parent="." instance=ExtResource( 2 )]
+visible = false
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 65539, 0, 0, 65540, 0, 0, 65544, 0, 0, 65545, 0, 0, 65548, 0, 0, 131074, 0, 0, 131080, 0, 0, 131083, 0, 0, 131085, 0, 0, 196609, 0, 0, 196615, 0, 0, 196618, 0, 0, 196622, 0, 0, 262145, 0, 0, 262149, 0, 0, 262150, 0, 0, 262153, 0, 0, 262158, 0, 0, 262159, 0, 0, 327680, 0, 0, 327685, 0, 0, 327689, 0, 0, 327696, 0, 0, 327697, 0, 0, 393216, 0, 0, 393220, 0, 0, 393234, 0, 0, 458752, 0, 0, 458756, 0, 0, 458764, 0, 0, 458770, 0, 0, 524289, 0, 0, 524292, 0, 0, 524298, 0, 0, 524299, 0, 0, 524306, 0, 0, 589825, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589841, 0, 0, 655361, 0, 0, 655375, 0, 0, 655376, 0, 0, 720898, 0, 0, 720910, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0 )
+
+[node name="Thorns" parent="." instance=ExtResource( 5 )]
+position = Vector2( 115, 320 )
+
+[node name="Thorns2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 192, 336 )
+
+[node name="Thorns3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 127, 351 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 83, 189 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort"]
+position = Vector2( 397, 134 )
+frames = SubResource( 15 )
+frame = 4
+playing = true
+
+[node name="Block" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 360, 311 )
+
+[node name="Block2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 292, 339 )

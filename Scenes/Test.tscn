@@ -1,69 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/Block.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Killzone.tscn" type="PackedScene" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 20 )
+[ext_resource path="res://Scenes/Thorns.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 100, 20 )
 
 [node name="Test" type="Node"]
 
-[node name="Block" type="RigidBody2D" parent="." groups=["box"]]
-position = Vector2( 225, 225 )
-collision_layer = 4
-collision_mask = 61
-mass = 30.0
-gravity_scale = 0.0
-linear_damp = 10.0
-angular_damp = 10.0
-script = ExtResource( 2 )
+[node name="YSort" type="YSort" parent="."]
 
-[node name="sprite" type="ColorRect" parent="Block"]
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="shape" type="CollisionShape2D" parent="Block"]
-shape = SubResource( 1 )
-
-[node name="Block2" type="RigidBody2D" parent="." groups=["box"]]
-position = Vector2( 163, 225 )
-collision_layer = 4
-collision_mask = 61
-mass = 20.0
-gravity_scale = 0.0
-linear_damp = 10.0
-angular_damp = 10.0
-script = ExtResource( 2 )
-
-[node name="sprite" type="ColorRect" parent="Block2"]
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="shape" type="CollisionShape2D" parent="Block2"]
-shape = SubResource( 1 )
-
-[node name="Wall" type="StaticBody2D" parent="."]
+[node name="Wall" type="StaticBody2D" parent="YSort"]
 position = Vector2( 333, 352 )
 collision_layer = 8
 collision_mask = 63
 
-[node name="sprite" type="ColorRect" parent="Wall"]
+[node name="sprite" type="ColorRect" parent="YSort/Wall"]
 margin_left = -100.0
 margin_top = -20.0
 margin_right = 100.0
@@ -75,15 +28,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shape" type="CollisionShape2D" parent="Wall"]
+[node name="shape" type="CollisionShape2D" parent="YSort/Wall"]
 shape = SubResource( 2 )
 
-[node name="SoftWall" type="StaticBody2D" parent="."]
+[node name="SoftWall" type="StaticBody2D" parent="YSort"]
 position = Vector2( 312, 93 )
 collision_layer = 16
 collision_mask = 61
 
-[node name="sprite" type="ColorRect" parent="SoftWall"]
+[node name="sprite" type="ColorRect" parent="YSort/SoftWall"]
 margin_left = -100.0
 margin_top = -20.0
 margin_right = 100.0
@@ -95,10 +48,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shape" type="CollisionShape2D" parent="SoftWall"]
+[node name="shape" type="CollisionShape2D" parent="YSort/SoftWall"]
 shape = SubResource( 2 )
 
-[node name="Killzone" parent="." instance=ExtResource( 3 )]
+[node name="Killzone" parent="YSort" instance=ExtResource( 3 )]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 514, 256 )
+
+[node name="Block" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 273, 236 )
