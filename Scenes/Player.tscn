@@ -365,24 +365,25 @@ shape = SubResource( 1 )
 
 [node name="idle" type="AnimatedSprite" parent="Be_sprites"]
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="front" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 11 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="back" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 16 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="side" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 21 )
+frame = 1
 playing = true
 
 [node name="Not_be_sprites" type="Node2D" parent="."]
@@ -391,25 +392,24 @@ visible = false
 [node name="idle" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 26 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="front" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 31 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="back" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 36 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="side" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 41 )
-frame = 3
 playing = true
 
 [node name="Transitions" type="Node2D" parent="."]

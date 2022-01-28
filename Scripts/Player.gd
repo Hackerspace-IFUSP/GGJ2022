@@ -8,7 +8,7 @@ var velocity = Vector2.ZERO
 
 export var speed = 12000
 export var inertia = 100
-export var energy = 100
+export var energy = 0
 
 enum{to_be,not_to_be,transformation}
 var status = to_be 
@@ -141,34 +141,25 @@ func reset():
 ### Faz o bixo ser ou não ser
 func to_be():
 	
-	if Input.is_action_just_pressed("ui_change"):
-		if status == to_be and energy > 0:
-			timer_status = on_timer
-			collision_layer = 2
-			$Be_sprites.hide()
-			status = transformation
-			$Transitions/anim.play("Transformation")
-			yield($Transitions/anim,"animation_finished")
-			$Not_be_sprites.show()
-			status = not_to_be
-			$energy_timer.start()
+	if status == to_be and energy > 0:
+		timer_status = on_timer
+		collision_layer = 2
+		$Be_sprites.hide()
+		status = transformation
+		$Transitions/anim.play("Transformation")
+		yield($Transitions/anim,"animation_finished")
+		$Not_be_sprites.show()
+		status = not_to_be
+		$energy_timer.start()
 			
-#		elif status == not_to_be and energy >= 0:
-#			$ColorRect.color.a = 1
-#			collision_layer = 1
-#			$Not_be_sprites.hide()
-#			$Transitions/anim.play("Detransformation")
-#			yield($Transitions/anim,"animation_finished")
-#			$Be_sprites.show()
-#			status = to_be
-#			$energy_timer.stop()
-	
+
 
 ###
 
-func timer_status():
-	timer_status = out_timer
-
+func get_energy(val):
+	energy = val
+	
+	
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #
 ###################################################
