@@ -160,6 +160,17 @@ func get_energy(val):
 	energy = val
 	
 	
+func blink(val1,val2):
+	var temp_status = status
+	status = transformation
+	$teleport_anim.play("Event1")
+	yield($teleport_anim,"animation_finished")
+	global_position.x = val1 
+	global_position.y = val2
+	$teleport_anim.play("Event2")
+	yield($teleport_anim,"animation_finished")
+	status = temp_status
+	
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #
 ###################################################

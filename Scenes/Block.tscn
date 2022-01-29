@@ -9,7 +9,7 @@ extents = Vector2( 39.9999, 16 )
 [node name="Block" type="RigidBody2D" groups=["box"]]
 rotation = 0.00210422
 collision_layer = 4
-collision_mask = 61
+collision_mask = 63
 mode = 2
 mass = 30.0
 linear_damp = 10.0
