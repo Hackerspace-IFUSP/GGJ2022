@@ -7,7 +7,8 @@ func _ready():
 
 
 func _on_Button_body_entered(body):
-		get_parent().disable_collision()
+	$button.play()
+	get_parent().disable_collision()
 	
 	
 

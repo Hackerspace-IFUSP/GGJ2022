@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Yorik.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Sprites/walk_dead_back.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/transformation.png" type="Texture" id=11]
 [ext_resource path="res://Fonts/Shwumatik/Shwumatik.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://SFX/dead.wav" type="AudioStream" id=13]
+[ext_resource path="res://SFX/blink.wav" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 13 )
@@ -417,23 +419,25 @@ shape = SubResource( 1 )
 
 [node name="idle" type="AnimatedSprite" parent="Be_sprites"]
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="front" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 11 )
+frame = 3
 playing = true
 
 [node name="back" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 16 )
+frame = 3
 playing = true
 
 [node name="side" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 21 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Not_be_sprites" type="Node2D" parent="."]
@@ -442,23 +446,24 @@ visible = false
 [node name="idle" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 26 )
+frame = 3
 playing = true
 
 [node name="front" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 31 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="back" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 36 )
+frame = 3
 playing = true
 
 [node name="side" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 41 )
-frame = 1
 playing = true
 
 [node name="Transitions" type="Node2D" parent="."]
@@ -473,6 +478,10 @@ anims/Dead = SubResource( 42 )
 anims/Detransformation = SubResource( 45 )
 anims/RESET = SubResource( 43 )
 anims/Transformation = SubResource( 44 )
+
+[node name="dead" type="AudioStreamPlayer" parent="Transitions"]
+stream = ExtResource( 13 )
+volume_db = -5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -491,5 +500,10 @@ __meta__ = {
 anims/Event1 = SubResource( 47 )
 anims/Event2 = SubResource( 48 )
 anims/RESET = SubResource( 49 )
+
+[node name="blink" type="Node2D" parent="."]
+
+[node name="blink" type="AudioStreamPlayer" parent="blink"]
+stream = ExtResource( 14 )
 
 [connection signal="timeout" from="energy_timer" to="." method="_on_energy_timer_timeout"]

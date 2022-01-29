@@ -16,6 +16,9 @@ var status = to_be
 enum{on_timer,out_timer}
 var timer_status = out_timer
 
+var audio_player = 0
+
+
 func _ready():
 	pass
 
@@ -130,13 +133,15 @@ func input_reset():
 
 ### Faz o bixo resetar conforme um parâmetro
 func reset():
-	if timer_status == out_timer:
-		status = transformation
-		$Be_sprites.hide()
-		$Not_be_sprites.hide()
-		$Transitions/anim.play("Dead")
-		yield($Transitions/anim,"animation_finished")
-		get_tree().reload_current_scene()
+	if audio_player == 0:
+		$Transitions/dead.play()
+		audio_player = 1
+	status = transformation
+	$Be_sprites.hide()
+	$Not_be_sprites.hide()
+	$Transitions/anim.play("Dead")
+	yield($Transitions/anim,"animation_finished")
+	get_tree().reload_current_scene()
 
 ### Faz o bixo ser ou não ser
 func to_be():
@@ -163,13 +168,29 @@ func get_energy(val):
 func blink(val1,val2):
 	var temp_status = status
 	status = transformation
+	$blink/blink.play()
 	$teleport_anim.play("Event1")
 	yield($teleport_anim,"animation_finished")
 	global_position.x = val1 
 	global_position.y = val2
+	$blink/blink.play()
 	$teleport_anim.play("Event2")
 	yield($teleport_anim,"animation_finished")
 	status = temp_status
+	
+func stop():
+	if status == to_be:
+		$Be_sprites/idle.show()
+		$Be_sprites/front.hide()
+		$Be_sprites/back.hide()
+		$Be_sprites/side.hide()
+	else:
+		$Not_be_sprites/idle.show()
+		$Not_be_sprites/front.hide()
+		$Not_be_sprites/back.hide()
+		$Not_be_sprites/side.hide()
+	status = transformation
+	
 	
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #

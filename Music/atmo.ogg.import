@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/atmo.ogg-b10819fb6d8ff9f2b7c287b573a03e63.oggstr"
+
+[deps]
+
+source_file="res://Music/atmo.ogg"
+dest_files=[ "res://.import/atmo.ogg-b10819fb6d8ff9f2b7c287b573a03e63.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

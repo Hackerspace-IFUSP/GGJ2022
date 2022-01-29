@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Sprites/light_Circle.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Teleporter.gd" type="Script" id=2]
+[ext_resource path="res://SFX/exit.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 14.0
@@ -51,7 +52,10 @@ shape = SubResource( 8 )
 
 [node name="sprite1" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
-frame = 4
+frame = 2
 playing = true
+
+[node name="exit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_Teleporter_body_entered"]

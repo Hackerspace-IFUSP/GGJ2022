@@ -10,6 +10,7 @@ var maps = [
 	"res://Levels/Level7.tscn",
 	"res://Levels/Level8.tscn",
 	"res://Levels/Level9.tscn",
+	"res://Levels/Level10.tscn",
 	"res://Levels/End_screen.tscn"
 ]
 
@@ -20,4 +21,7 @@ export var choose_map = MAP1
 
 func _on_Teleporter_body_entered(body):
 	if body.name == "Player":
+		$exit.play()
+		body.stop()
+		yield($exit,"finished")
 		get_tree().change_scene(maps[choose_map])
