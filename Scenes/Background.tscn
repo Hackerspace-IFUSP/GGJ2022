@@ -153,3 +153,4 @@ anims/event = SubResource( 2 )
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -15.0
