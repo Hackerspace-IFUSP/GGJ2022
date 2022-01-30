@@ -38,7 +38,7 @@ var default_settings = {
 		},
 		
 		"levels":{
-			"current_level":0
+			"current_level":1
 		}
 	
 	}

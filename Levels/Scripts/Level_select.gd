@@ -1,26 +1,13 @@
 extends Node
 
 func _ready():
-	if GAME.levels[0] == 0:
-		$Text_and_buttons/Levels/Level1.disabled = true
-	if GAME.levels[1] == 0:
-		$Text_and_buttons/Levels/Level2.disabled = true
-	if GAME.levels[2] == 0:
-		$Text_and_buttons/Levels/Level3.disabled = true
-	if GAME.levels[3] == 0:
-		$Text_and_buttons/Levels/Level4.disabled = true
-	if GAME.levels[4] == 0:
-		$Text_and_buttons/Levels/Level5.disabled = true
-	if GAME.levels[5] == 0:
-		$Text_and_buttons/Levels/Level6.disabled = true
-	if GAME.levels[6] == 0:
-		$Text_and_buttons/Levels/Level7.disabled = true
-	if GAME.levels[7] == 0:
-		$Text_and_buttons/Levels/Level8.disabled = true
-	if GAME.levels[8] == 0:
-		$Text_and_buttons/Levels/Level9.disabled = true
-	if GAME.levels[9] == 0:
-		$Text_and_buttons/Levels/Level10.disabled = true
+	for child in $Text_and_buttons/Levels.get_children():
+		var level_to_unlock = int(child.name)
+		print(level_to_unlock)
+		if level_to_unlock <= GAME.level_open:
+			child.disabled = false
+	
+	
 	$Anim.play("Event1")
 
 
@@ -106,17 +93,16 @@ func _on_Level10_pressed():
 
 
 func disable_all_buttons():
-	$Text_and_buttons/Levels/Level1.disabled = true
-	$Text_and_buttons/Levels/Level2.disabled = true
-	$Text_and_buttons/Levels/Level3.disabled = true
-	$Text_and_buttons/Levels/Level4.disabled = true
-	$Text_and_buttons/Levels/Level5.disabled = true
-	$Text_and_buttons/Levels/Level6.disabled = true
-	$Text_and_buttons/Levels/Level7.disabled = true
-	$Text_and_buttons/Levels/Level8.disabled = true
-	$Text_and_buttons/Levels/Level9.disabled = true
-	$Text_and_buttons/Levels/Level10.disabled = true
-
+	for child in $Text_and_buttons/Levels.get_children():
+		child.disabled = true
+	
 func play_transition2():
 	$Anim.play("Event2")
 	yield($Anim,"animation_finished")
+
+
+func _on_Clear_pressed():
+	GAME.level_open = 0
+	GAME.save_settings()
+	disable_all_buttons()
+	_on_Return_pressed()
