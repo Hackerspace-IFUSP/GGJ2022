@@ -21,6 +21,7 @@ export var choose_map = MAP1
 
 func _on_Teleporter_body_entered(body):
 	if body.name == "Player":
+		get_parent().reset_level()
 		$exit.play()
 		body.stop()
 		yield($exit,"finished")
