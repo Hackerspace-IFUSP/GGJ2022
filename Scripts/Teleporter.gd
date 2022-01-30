@@ -25,4 +25,7 @@ func _on_Teleporter_body_entered(body):
 		$exit.play()
 		body.stop()
 		yield($exit,"finished")
+		GAME.level_open+=1
+		GAME.save_settings()
 		get_tree().change_scene(maps[choose_map])
+		
