@@ -244,3 +244,10 @@ func _on_energy_timer_timeout():
 		
 		
 	$Energy.text = str(energy)
+
+
+func _on_Level10_pressed():
+	get_parent().get_parent().reset_level()
+	$teleport_anim.play("Event3")
+	yield($teleport_anim,"animation_finished")
+	get_tree().change_scene("res://Levels/Title_screen.tscn")

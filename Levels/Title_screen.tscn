@@ -198,6 +198,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Quit" type="Button" parent="Text_and_buttons"]
+margin_left = 220.0
+margin_top = 373.0
+margin_right = 420.0
+margin_bottom = 428.0
+custom_colors/font_color_focus = Color( 0.113725, 0.223529, 0.156863, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.113725, 0.223529, 0.156863, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="transition" type="AnimationPlayer" parent="."]
 anims/Event1 = SubResource( 9 )
 anims/Event2 = SubResource( 11 )
@@ -205,3 +223,4 @@ anims/RESET = SubResource( 10 )
 
 [connection signal="pressed" from="Text_and_buttons/Start" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Text_and_buttons/Select_level" to="." method="_on_Start2_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Quit" to="." method="_on_Quit_pressed"]
