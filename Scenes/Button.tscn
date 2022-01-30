@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/Button.gd" type="Script" id=1]
 [ext_resource path="res://SFX/magnet_action.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sprites/blink.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 20, 20 )
@@ -12,28 +13,13 @@ collision_layer = 0
 collision_mask = 7
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ButtonSprite" type="Sprite" parent="."]
+modulate = Color( 1, 0.462745, 0.415686, 1 )
+texture = ExtResource( 3 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 3 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = -26.0
-margin_top = -9.0
-margin_right = 28.0
-margin_bottom = 5.0
-text = "BUTTON"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="button" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
