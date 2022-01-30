@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Ilumination="*res://Scenes/Ilumination.tscn"
+GAME="*res://Scripts/GAME.gd"
 
 [display]
 

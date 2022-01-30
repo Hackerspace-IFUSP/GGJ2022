@@ -52,7 +52,6 @@ shape = SubResource( 8 )
 
 [node name="sprite1" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
-frame = 1
 playing = true
 
 [node name="exit" type="AudioStreamPlayer" parent="."]
