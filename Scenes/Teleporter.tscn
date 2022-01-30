@@ -5,8 +5,8 @@
 [ext_resource path="res://SFX/exit.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=8]
-radius = 14.0
-height = 30.0
+radius = 4.99998
+height = 8.00012
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -52,7 +52,7 @@ shape = SubResource( 8 )
 
 [node name="sprite1" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="exit" type="AudioStreamPlayer" parent="."]

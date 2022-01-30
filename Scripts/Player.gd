@@ -136,6 +136,7 @@ func reset():
 	if audio_player == 0:
 		$Transitions/dead.play()
 		audio_player = 1
+	get_parent().get_parent().reset_level()
 	status = transformation
 	$Be_sprites.hide()
 	$Not_be_sprites.hide()
@@ -147,6 +148,7 @@ func reset():
 func to_be():
 	
 	if status == to_be and energy > 0:
+		$Transitions/transf.play()
 		timer_status = on_timer
 		collision_layer = 2
 		$Be_sprites.hide()
@@ -191,7 +193,10 @@ func stop():
 		$Not_be_sprites/side.hide()
 	status = transformation
 	
+func dont_stop():
+	status = to_be
 	
+
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #
 ###################################################
@@ -221,7 +226,10 @@ func stop():
 func _on_energy_timer_timeout():
 	if energy > 0:
 		energy -= 10
+		if energy <= 20:
+			$Transitions/time_short.play()
 	elif energy <= 0 and timer_status == on_timer:
+		$Transitions/transf.play()
 		timer_status = out_timer
 		energy = 0
 		status = transformation

@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Yorik.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Fonts/Shwumatik/Shwumatik.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://SFX/dead.wav" type="AudioStream" id=13]
 [ext_resource path="res://SFX/blink.wav" type="AudioStream" id=14]
+[ext_resource path="res://SFX/button.wav" type="AudioStream" id=15]
+[ext_resource path="res://SFX/link.wav" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 13 )
@@ -425,19 +427,19 @@ playing = true
 [node name="front" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 11 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="back" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 16 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="side" type="AnimatedSprite" parent="Be_sprites"]
 visible = false
 frames = SubResource( 21 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Not_be_sprites" type="Node2D" parent="."]
@@ -452,18 +454,18 @@ playing = true
 [node name="front" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 31 )
-frame = 2
 playing = true
 
 [node name="back" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 36 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="side" type="AnimatedSprite" parent="Not_be_sprites"]
 visible = false
 frames = SubResource( 41 )
+frame = 2
 playing = true
 
 [node name="Transitions" type="Node2D" parent="."]
@@ -481,6 +483,14 @@ anims/Transformation = SubResource( 44 )
 
 [node name="dead" type="AudioStreamPlayer" parent="Transitions"]
 stream = ExtResource( 13 )
+volume_db = -5.0
+
+[node name="transf" type="AudioStreamPlayer" parent="Transitions"]
+stream = ExtResource( 15 )
+volume_db = -5.0
+
+[node name="time_short" type="AudioStreamPlayer" parent="Transitions"]
+stream = ExtResource( 16 )
 volume_db = -5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
