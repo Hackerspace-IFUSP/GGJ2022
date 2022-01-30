@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fonts/Shwumatik/Shwumatik.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Levels/Scripts/Title_screen.gd" type="Script" id=2]
@@ -24,10 +24,104 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
+[sub_resource type="Animation" id=9]
+resource_name = "Event1"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text_and_buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Event2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text_and_buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text_and_buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Title_screen" type="Node"]
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 480.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text_and_buttons" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Label" type="Label" parent="Text_and_buttons"]
 margin_top = 73.0
 margin_right = 640.0
 margin_bottom = 170.0
@@ -40,7 +134,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="Text_and_buttons"]
 margin_top = 163.0
 margin_right = 640.0
 margin_bottom = 188.0
@@ -54,7 +148,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="Text_and_buttons"]
 margin_top = 451.0
 margin_right = 640.0
 margin_bottom = 476.0
@@ -68,7 +162,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="."]
+[node name="Start" type="Button" parent="Text_and_buttons"]
 margin_left = 220.0
 margin_top = 277.0
 margin_right = 420.0
@@ -86,7 +180,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Select_level" type="Button" parent="."]
+[node name="Select_level" type="Button" parent="Text_and_buttons"]
 margin_left = 220.0
 margin_top = 325.0
 margin_right = 420.0
@@ -104,14 +198,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-margin_right = 640.0
-margin_bottom = 480.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="transition" type="AnimationPlayer" parent="."]
+anims/Event1 = SubResource( 9 )
+anims/Event2 = SubResource( 11 )
+anims/RESET = SubResource( 10 )
 
-[connection signal="pressed" from="Start" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Select_level" to="." method="_on_Start2_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Select_level" to="." method="_on_Start2_pressed"]

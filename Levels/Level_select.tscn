@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Fonts/Shwumatik/Shwumatik.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Levels/Scripts/Level_select.gd" type="Script" id=2]
@@ -20,10 +20,104 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
+[sub_resource type="Animation" id=9]
+resource_name = "Event1"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text_and_buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Event2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text_and_buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text_and_buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Level_select" type="Node"]
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 480.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text_and_buttons" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Label" type="Label" parent="Text_and_buttons"]
 margin_top = 73.0
 margin_right = 640.0
 margin_bottom = 170.0
@@ -36,7 +130,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="Text_and_buttons"]
 margin_top = 451.0
 margin_right = 640.0
 margin_bottom = 476.0
@@ -50,7 +144,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Return" type="Button" parent="."]
+[node name="Return" type="Button" parent="Text_and_buttons"]
 margin_left = 220.0
 margin_top = 392.0
 margin_right = 420.0
@@ -68,9 +162,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Levels" type="Node2D" parent="."]
+[node name="Levels" type="Node2D" parent="Text_and_buttons"]
 
-[node name="Level1" type="Button" parent="Levels"]
+[node name="Level1" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 70.0
 margin_top = 210.0
 margin_right = 150.0
@@ -89,7 +183,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level2" type="Button" parent="Levels"]
+[node name="Level2" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 170.0
 margin_top = 210.0
 margin_right = 250.0
@@ -108,7 +202,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level3" type="Button" parent="Levels"]
+[node name="Level3" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 270.0
 margin_top = 210.0
 margin_right = 350.0
@@ -127,7 +221,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level4" type="Button" parent="Levels"]
+[node name="Level4" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 370.0
 margin_top = 210.0
 margin_right = 450.0
@@ -146,7 +240,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level5" type="Button" parent="Levels"]
+[node name="Level5" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 470.0
 margin_top = 210.0
 margin_right = 550.0
@@ -165,7 +259,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level6" type="Button" parent="Levels"]
+[node name="Level6" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 90.0
 margin_top = 270.0
 margin_right = 170.0
@@ -184,7 +278,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level7" type="Button" parent="Levels"]
+[node name="Level7" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 190.0
 margin_top = 270.0
 margin_right = 270.0
@@ -203,7 +297,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level8" type="Button" parent="Levels"]
+[node name="Level8" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 290.0
 margin_top = 270.0
 margin_right = 370.0
@@ -222,7 +316,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level9" type="Button" parent="Levels"]
+[node name="Level9" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 390.0
 margin_top = 270.0
 margin_right = 470.0
@@ -241,7 +335,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level10" type="Button" parent="Levels"]
+[node name="Level10" type="Button" parent="Text_and_buttons/Levels"]
 margin_left = 490.0
 margin_top = 270.0
 margin_right = 570.0
@@ -260,11 +354,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-margin_right = 640.0
-margin_bottom = 480.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Event1 = SubResource( 9 )
+anims/Event2 = SubResource( 10 )
+anims/RESET = SubResource( 11 )
+
+[connection signal="pressed" from="Text_and_buttons/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level1" to="." method="_on_Level1_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level2" to="." method="_on_Level2_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level3" to="." method="_on_Level3_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level4" to="." method="_on_Level4_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level5" to="." method="_on_Level5_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level6" to="." method="_on_Level6_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level7" to="." method="_on_Level7_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level8" to="." method="_on_Level8_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level9" to="." method="_on_Level9_pressed"]
+[connection signal="pressed" from="Text_and_buttons/Levels/Level10" to="." method="_on_Level10_pressed"]
